@@ -16,7 +16,7 @@ db = client.ecommerceDB
 
 count = 0
 for segment in custSegment:
-	jsonString = "{'customer_segment_id':"+`count`+",'name':'"+segment+"'}"
+	jsonString = {'customer_segment_id':count,'name':segment}
 	result = db.customer_segment.insert_one(jsonString)
 	print result;
 	count = count+1
