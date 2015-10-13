@@ -5,7 +5,7 @@ from pymongo import MongoClient
 client = MongoClient()
 db = client.ecommerceDB
 cursor = db.customer_segment.find()
-#ast.literal_eval(json.dumps(cursor));
+db.customer.delete_many({})
 cCS = 0
 csID = []
 csName = []

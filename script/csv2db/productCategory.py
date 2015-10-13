@@ -3,23 +3,23 @@ from pymongo import MongoClient
 
 client = MongoClient()
 db = client.ecommerceDB
-db.shipping.delete_many({})
+db.product_category.delete_many({})
 
 with open("../../rawDataSet/superstoreSalesData/order.csv") as f:
 	reader = csv.reader(f)
 	count = 0
-	shippings = [];
+	pCategories = [];
 	for row in reader:
 		if count != 0:
-			if row[7] not in shippings:
-				shippings.append(row[7]);
+			if row[15] not in pCategories:
+				pCategories.append(row[15]);
 		count = count + 1
-print shippings
+print pCategories
 
 count = 0
-for shipping in shippings:
-	jsonString = {'shipping_id':count,'name':shipping}
-	result = db.shipping.insert_one(jsonString)
+for pCategory in pCategories:
+	jsonString = {'product_category_id':count,'name':pCategory}
+	result = db.product_category.insert_one(jsonString)
 	print result;
 	count = count+1
 	print jsonString

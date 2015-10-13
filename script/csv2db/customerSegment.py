@@ -1,6 +1,9 @@
 import csv
 from pymongo import MongoClient
 
+client = MongoClient()
+db = client.ecommerceDB
+db.customer_segment.delete_many({})
 with open("../../rawDataSet/superstoreSalesData/order.csv") as f:
 	reader = csv.reader(f)
 	count = 0
@@ -11,8 +14,6 @@ with open("../../rawDataSet/superstoreSalesData/order.csv") as f:
 				custSegment.append(row[14]);
 		count = count + 1
 print custSegment
-client = MongoClient()
-db = client.ecommerceDB
 
 count = 0
 for segment in custSegment:
