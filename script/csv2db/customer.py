@@ -37,8 +37,8 @@ with open("../../rawDataSet/superstoreSalesData/order.csv") as f:
 				unique = unique + 1
 		count = count + 1
 
-for j in range(0,count):
-	jsonString = {'customer_id':j,'customer_group_id':segment[j],'name':name[j],'email_address':email[j],'province':province[j],'region':region[j]}
+for j in range(0,count-1):
+	jsonString = {'customer_id':j,'customer_group_id':segment[j],'name':name[j],'email_address':email[j],'province':province[j],'region':region[j],'country':'CA'}
 	result = db.customer.insert_one(jsonString)
 	print result
 print count
