@@ -5,7 +5,7 @@ import json, ast
 from pymongo import MongoClient
 from pandas import Series, DataFrame
 
-client = MongoClient()
+client = MongoClient("mongodb://efrata.xyz:27019")
 db = client.ecommerceDB
 cursor = db.customer.find()
 df = pd.DataFrame(list(cursor))
